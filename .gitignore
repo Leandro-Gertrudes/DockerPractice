@@ -1,16 +1,14 @@
-cat > ~/inception/.gitignore << 'EOF'
 # Environment variables e secrets
 srcs/.env
 secrets/
 
 # Docker
-srcs/requirements/**/tools/
 *.log
 
 # Data volumes
 data/
 
 # OS files
+*.swp
 .DS_Store
 Thumbs.db
-EOF
