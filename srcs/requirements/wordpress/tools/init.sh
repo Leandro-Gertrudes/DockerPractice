@@ -42,6 +42,20 @@ if [ ! -f /var/www/html/wp-config.php ]; then
         "${WP_USER}" "${WP_USER_EMAIL}" \
         --role=subscriber \
         --user_pass="${WP_USER_PASSWORD}"
+        
+        
+    #---- bonus-------    
+    wp config set WP_REDIS_HOST redis --allow-root
+    wp config set WP_REDIS_PORT 6379 --allow-root --raw
+    
+    wp plugin install redis-cache --activate --allow-root
+    if wp redis status --allow-root 2>/dev/null | grep -q "Connected"; then
+        wp redis enable --allow-root
+        echo "Redis cache enabled."
+    else
+        echo "Redis not reachable, skipping cache (site uses DB directly)."
+    fi
+    # --------
 
     echo "WordPress installation complete."
 else
