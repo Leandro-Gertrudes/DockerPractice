@@ -17,6 +17,7 @@ if [ ! -d "${DATADIR}/mysql" ]; then
 fi
 
 INIT_SQL="/tmp/init.sql"
+rm -f "${INIT_SQL}"
 cat > "${INIT_SQL}" <<EOF
 ALTER USER 'root'@'localhost' IDENTIFIED BY '${DB_ROOT_PASSWORD}';
 
