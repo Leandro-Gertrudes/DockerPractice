@@ -1,5 +1,6 @@
 NAME    = inception
 COMPOSE = docker compose -f srcs/docker-compose.yml
+BONUS   = --profile bonus
 DATA    = /home/lgertrud/data
 
 all: up
@@ -8,20 +9,24 @@ up:
 	mkdir -p $(DATA)/mariadb $(DATA)/wordpress
 	$(COMPOSE) up -d --build
 
+bonus:
+	mkdir -p $(DATA)/mariadb $(DATA)/wordpress $(DATA)/uptime-kuma
+	$(COMPOSE) $(BONUS) up -d --build
+
 build:
 	$(COMPOSE) build
 
 down:
-	$(COMPOSE) down
+	$(COMPOSE) $(BONUS) down
 
 stop:
-	$(COMPOSE) stop
+	$(COMPOSE) $(BONUS) stop
 
 start:
-	$(COMPOSE) start
+	$(COMPOSE) $(BONUS) start
 
 clean:
-	$(COMPOSE) down -v
+	$(COMPOSE) $(BONUS) down -v
 
 fclean: clean
 	sudo rm -rf $(DATA)
@@ -30,6 +35,6 @@ fclean: clean
 re: fclean all
 
 logs:
-	$(COMPOSE) logs -f
+	$(COMPOSE) $(BONUS) logs -f
 
-.PHONY: all up build down stop start clean fclean re logs
+.PHONY: all up bonus build down stop start clean fclean re logs

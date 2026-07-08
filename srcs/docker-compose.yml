@@ -55,6 +55,21 @@ services:
       - wordpress_data:/var/www/html 
     ports:
       - "443:443"
+      
+   # /////// BONUS /////////
+
+   # ---- Redis cache --------------------------------------------------------
+  redis:
+    build:
+      context: ./requirements/bonus/redis
+    image: redis
+    container_name: redis
+    profiles: [bonus]
+    restart: always
+    networks:
+      - inception
+    expose:
+      - "6379"
 
 # ---- Docker network ------------
 networks:
