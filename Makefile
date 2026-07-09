@@ -12,6 +12,7 @@ up:
 bonus:
 	mkdir -p $(DATA)/mariadb $(DATA)/wordpress $(DATA)/uptime-kuma
 	$(COMPOSE) $(BONUS) up -d --build
+	$(COMPOSE) restart wordpress
 
 build:
 	$(COMPOSE) build
