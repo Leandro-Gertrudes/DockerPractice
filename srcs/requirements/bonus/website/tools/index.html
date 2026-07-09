@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lgertrud — Resume</title>
+    <style>
+        :root {
+            --bg: #0f1115;
+            --card: #171a21;
+            --accent: #6ea8fe;
+            --text: #e6e6e6;
+            --muted: #9aa0a6;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 3rem 1rem;
+        }
+        .container { max-width: 720px; margin: 0 auto; }
+        header {
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        h1 { font-size: 2.4rem; letter-spacing: -0.5px; }
+        header p { color: var(--accent); font-size: 1.1rem; margin-top: 0.3rem; }
+        section {
+            background: var(--card);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+        h2 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent);
+        }
+        .item { margin-bottom: 1rem; }
+        .item:last-child { margin-bottom: 0; }
+        .item .role { font-weight: 600; }
+        .item .meta { color: var(--muted); font-size: 0.9rem; }
+        ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        li {
+            background: #222630;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.85rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Your Name</h1>
+            <p>Software Engineering Student · 42</p>
+        </header>
+
+        <section>
+            <h2>About</h2>
+            <p>
+                ....
+            </p>
+        </section>
+
+        <section>
+            <h2>Experience</h2>
+            <div class="item">
+                <div class="role">Role / Project</div>
+                <div class="meta">Organization · Year – Year</div>
+                <p>.....</p>
+            </div>
+            <div class="item">
+                <div class="role">Another Role</div>
+                <div class="meta">Organization · Year – Year</div>
+                <p>...........</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Skills</h2>
+            <ul>
+                <li>C</li>
+                <li>Docker</li>
+                <li>Linux</li>
+                <li>Git</li>
+                <li>Bash</li>
+                <li>etc...</li>
+            </ul>
+        </section>
+
+        <footer>
+            Built as part of the 42 Inception project · Static site (no PHP)
+        </footer>
+    </div>
+</body>
+</html>
