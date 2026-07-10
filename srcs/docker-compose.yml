@@ -104,6 +104,36 @@ services:
     ports:
       - "8080:8080"
 
+  # ---- Adminer (web DB admin) ---------------------------------------------
+  adminer:
+    build:
+      context: ./requirements/bonus/adminer
+    image: adminer
+    container_name: adminer
+    profiles: [bonus]
+    restart: always
+    depends_on:
+      - mariadb
+    networks:
+      - inception
+    ports:
+      - "8081:8081"
+
+  # ---- Uptime Kuma (service monitor) --------------------------------------
+  uptime-kuma:
+    build:
+      context: ./requirements/bonus/uptime-kuma
+    image: uptime-kuma
+    container_name: uptime-kuma
+    profiles: [bonus]
+    restart: always
+    networks:
+      - inception
+    volumes:
+      - uptime_kuma_data:/app/data
+    ports:
+      - "3001:3001"
+      
 # ---- Docker network ------------
 networks:
   inception:
@@ -123,6 +153,12 @@ volumes:
       type: none
       o: bind
       device: /home/lgertrud/data/wordpress
+  uptime_kuma_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/lgertrud/data/uptime-kuma
 
 # ---- Secrets: ---
 secrets:

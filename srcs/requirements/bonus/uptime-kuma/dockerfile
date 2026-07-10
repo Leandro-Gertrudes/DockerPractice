@@ -1,0 +1,19 @@
+FROM debian:bookworm
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        curl ca-certificates git && \
+    curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y --no-install-recommends nodejs && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN git clone --depth 1 --branch 1.23.13 \
+        https://github.com/louislam/uptime-kuma.git /app
+
+WORKDIR /app
+
+RUN npm run setup
+
+EXPOSE 3001
+
+CMD ["node", "server/server.js"]
