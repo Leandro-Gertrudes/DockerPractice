@@ -153,6 +153,8 @@ volumes:
       type: none
       o: bind
       device: /home/lgertrud/data/wordpress
+
+  #bonus
   uptime_kuma_data:
     driver: local
     driver_opts:
